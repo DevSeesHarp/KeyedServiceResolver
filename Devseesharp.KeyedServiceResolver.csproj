@@ -17,14 +17,15 @@
     <Copyright>Copyright (c) Devseesharp 2022.</Copyright>
     <Authors>Devseesharp</Authors>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageIcon>packageIcon.png</PackageIcon>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="assets\packageIcon.png">
+    <Resource Include="assets\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
-    </None>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
