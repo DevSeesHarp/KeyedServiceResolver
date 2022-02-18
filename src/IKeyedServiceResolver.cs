@@ -1,4 +1,4 @@
-﻿namespace KeyedServices
+﻿namespace Devseesharp.KeyedServices
 {
     /// <summary>
     /// Wraps the delegate that returns the <typeparamref name="TService"/> by passing in a <typeparamref name="TKey"/> <paramref name="key"/>
