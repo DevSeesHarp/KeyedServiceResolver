@@ -27,10 +27,6 @@
         /// </summary>
         /// <param name="key"></param>
         /// <returns><typeparamref name="TService"/></returns>
-        public TService Get(TKey key)
-        {
-            var r = _resolverDelegate(key);
-            return r;
-        }
+        public TService Get(TKey key) => _resolverDelegate(key);
     }
 }
