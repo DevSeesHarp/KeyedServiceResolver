@@ -2,7 +2,7 @@ using Xunit;
 using System;
 using Devseesharp.KeyedServices;
 
-namespace KeyedServices.Core.Test
+namespace Devseesharp.KeyedServices.Test
 {
     public class KeyedServiceResolverTest
     {

@@ -1,8 +1,9 @@
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection;
 
-namespace KeyedServices.Extensions.NET.Test
+namespace Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection.Test
 {
     public class ServiceCollectionIntegrationTest
     {
@@ -15,8 +16,9 @@ namespace KeyedServices.Extensions.NET.Test
         interface ITestService { }
 
         [Fact]
-        public void Test()
+        public void AddingKeyedServiceWithFactoryMustResolveCorrectService()
         {
+            // Arrange
             var services = new ServiceCollection();
             services.AddTransient<TestService1>();
             services.AddTransient<TestService2>();
@@ -32,7 +34,6 @@ namespace KeyedServices.Extensions.NET.Test
             }, ServiceLifetime.Scoped);
             var serviceProvider = services.BuildServiceProvider();
 
-
             // Act
             var keyedService = serviceProvider.GetService<IKeyedServiceResolver<FakeEnumKeys, ITestService>>();
 
@@ -44,13 +45,21 @@ namespace KeyedServices.Extensions.NET.Test
 
         }
 
+
+       
+
         [Fact]
         public void UsingServiceCollectionKeyedServicesMustReturnConfiguredServiceByKey()
         {
             // Arrange
             var services = new ServiceCollection();
+
+
+
             services.AddTransient<TestService1>();
             services.AddTransient<TestService2>();
+
+
             _ = services.AddTransient<KeyedServiceResolver<FakeEnumKeys, ITestService>.ResolverDelegate>(
                 provider => key =>
                 {
@@ -62,12 +71,18 @@ namespace KeyedServices.Extensions.NET.Test
                     };
                 });
             services.AddTransient<KeyedServiceResolver<FakeEnumKeys, ITestService>>();
+
+
+
+
+
+
             var serviceProvider = services.BuildServiceProvider();
 
-            // Act
             var keyedService = serviceProvider.GetService<KeyedServiceResolver<FakeEnumKeys, ITestService>>();
 
-            // Assert
+
+
             Assert.NotNull(keyedService);
             Assert.IsType<TestService1>(keyedService!.Get(FakeEnumKeys.Key1));
             Assert.IsType<TestService2>(keyedService.Get(FakeEnumKeys.Key2));
