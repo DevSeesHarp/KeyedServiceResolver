@@ -6,13 +6,13 @@ A extension that injects a wrapper that can resolve services by key
 
 Install directly with..
 ### Package Manager
-Install-Package Devseesharp.KeyedServiceResolver.Extensions.Microsoft.DependencyInjection
+Install-Package Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection
 
 ### .NET CLI
-dotnet add package Devseesharp.KeyedServiceResolver.Extensions.Microsoft.DependencyInjection
+dotnet add package Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection
 
 ### Or visit nuget.org
-[nuget.org/packages/Devseesharp.KeyedServiceResolver.Extensions.Microsoft.DependencyInjection](https://www.nuget.org/packages/Devseesharp.KeyedServiceResolver.Extensions.Microsoft.DependencyInjection/)
+[nuget.org/packages/Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection](https://www.nuget.org/packages/Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection)
 
 ### Features
 
@@ -27,7 +27,8 @@ First register your services with scope of choice.
 Then you register the resolver IKeyedResolver<TKey,TService> using the AddKeyedServiceFactory() extension.
 
 ```csharp
-    
+using Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection;
+
 // #1
 services.AddTransient<TestService1>();
 services.AddTransient<TestService2>();
@@ -46,9 +47,11 @@ services.AddKeyedServiceFactory<FakeEnumKeys, ITestService>(provider => key =>
 ```
 
 
-Later when you want to get the service by key, you inject the IKeyedResolver<TKey,TService> into your object and call the method Get(TKey), that will then resolve your service.
+Later when you want to get the service by key, you inject the IKeyedServiceResolver<TKey,TService> into your object and call the method Get(TKey), that will then resolve your service.
 
 ```csharp
+
+using Devseesharp.KeyedServices;
 
 public class DevseesharpService
 {
