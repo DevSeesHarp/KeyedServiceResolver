@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -11,28 +11,42 @@
     <PackageId>Devseesharp.$(AssemblyName)</PackageId>
     <Authors>Devseesharp</Authors>
     <Product>$(AssemblyName)</Product>
-    <Description>Resolve services by key by passing in a service factory into the dependency container</Description>
+    <Description>A extension that injects a wrapper that can resolve services by key using the resolver factory in a delegate</Description>
     <Copyright>Copyright (c) Devseesharp 2022</Copyright>
     <PackageProjectUrl>https://github.com/DevSeesHarp/KeyedServiceResolver</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Keyed service resolver; Key; Service; Resolver; Delegate; Wrapper; Dependency Injection; Microsoft.Extensions.DependencyInjection; Service Collection; Extension;</PackageTags>
-    <PackageReleaseNotes>package target changed to .Net standard</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
-	<Version>2.0.0</Version>
+	<Version>1.0.0</Version>
 	<PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/DevSeesHarp/KeyedServiceResolver</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <Content Include="assets\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="assets\icon.png">
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Devseesharp.KeyedServices.KeyedResolver" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

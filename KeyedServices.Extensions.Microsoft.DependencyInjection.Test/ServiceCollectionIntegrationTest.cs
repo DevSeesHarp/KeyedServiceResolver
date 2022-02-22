@@ -1,7 +1,6 @@
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
-using Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection;
 
 namespace Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection.Test
 {
@@ -44,9 +43,7 @@ namespace Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection.Tes
             Assert.ThrowsAny<KeyNotFoundException>(() => keyedService.Get(FakeEnumKeys.Key3));
 
         }
-
-
-       
+      
 
         [Fact]
         public void UsingServiceCollectionKeyedServicesMustReturnConfiguredServiceByKey()
@@ -71,23 +68,19 @@ namespace Devseesharp.KeyedServices.Extensions.Microsoft.DependencyInjection.Tes
                     };
                 });
             services.AddTransient<KeyedServiceResolver<FakeEnumKeys, ITestService>>();
-
-
-
-
-
-
             var serviceProvider = services.BuildServiceProvider();
 
+            // Act
             var keyedService = serviceProvider.GetService<KeyedServiceResolver<FakeEnumKeys, ITestService>>();
 
 
-
+            // Assert
             Assert.NotNull(keyedService);
             Assert.IsType<TestService1>(keyedService!.Get(FakeEnumKeys.Key1));
             Assert.IsType<TestService2>(keyedService.Get(FakeEnumKeys.Key2));
             Assert.ThrowsAny<KeyNotFoundException>(() => keyedService.Get(FakeEnumKeys.Key3));
         }
+
         class TestService1 : ITestService { }
         class TestService2 : ITestService { }
     }
