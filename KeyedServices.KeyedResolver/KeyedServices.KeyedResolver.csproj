@@ -16,10 +16,8 @@
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <AssemblyName>Devseesharp.$(MSBuildProjectName)</AssemblyName>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Changed package target version to .Net Standard</PackageReleaseNotes>
   </PropertyGroup>
 	
 	<ItemGroup>
@@ -28,12 +26,6 @@
 		</Content>
 	</ItemGroup>
   
-  <ItemGroup>
-	  <None Include="..\README.md">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-	  </None>
-  </ItemGroup>
 
   <ItemGroup>
 	  <Content Include="assets\icon.png">
